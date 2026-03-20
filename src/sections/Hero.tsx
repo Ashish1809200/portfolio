@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "../components/ui/Button";
+import { FaDownload } from "react-icons/fa";
 
 const Hero = () => {
   return (
@@ -18,6 +19,18 @@ const Hero = () => {
 
         <div className="mt-8 flex justify-center gap-4">
           <Button>View Projects</Button>
+          <a
+            href="/Ashish_Kashyap_Resume.pdf"
+            download
+            className="inline-flex items-center gap-2 mt-6 px-6 py-3 rounded-lg
+    bg-(--color-primary)]
+    text-white
+    hover:shadow-[0_0_15px_rgba(99,102,241,0.6)]
+    transition"
+          >
+            <FaDownload />
+            Download Resume
+          </a>
           <Button variant="outline">Contact Me</Button>
         </div>
       </div>

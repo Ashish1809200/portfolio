@@ -1,3 +1,4 @@
+import { FaLinkedin } from "react-icons/fa";
 import { useTheme } from "../context/ThemeContext";
 
 const Navbar = () => {
@@ -7,6 +8,14 @@ const Navbar = () => {
     <div className="fixed top-0 w-full backdrop-blur bg-white/5 p-4 flex justify-between">
       <h1 className="font-bold">Ashish Kashyap</h1>
       <div className="flex gap-6">
+        {/* <a
+          href="https://in.linkedin.com/in/ashish-kashyap-b40917229"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:text(--color-primary) transition"
+        >
+          <FaLinkedin size={20} />
+        </a> */}
         <button onClick={toggleTheme}>Theme</button>
       </div>
     </div>
