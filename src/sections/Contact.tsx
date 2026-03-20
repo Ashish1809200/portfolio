@@ -15,17 +15,14 @@ const Contact = () => {
           viewport={{ once: true }}
           className="text-center"
         >
-          <h2 className="text-3xl font-bold">
-            Let’s Build Something Together
-          </h2>
+          <h2 className="text-3xl font-bold">Let’s Build Something Together</h2>
 
-          <p className="mt-4 text-[var(--color-muted)]">
+          <p className="mt-4 text-(--color-muted)">
             Open to full-time opportunities, freelance work, and collaborations.
           </p>
 
           {/* CONTACT CARDS */}
           <div className="grid md:grid-cols-3 gap-6 mt-10">
-            
             {/* EMAIL */}
             <a
               href="mailto:ashishkashyap024@gmail.com"
@@ -77,7 +74,6 @@ const Contact = () => {
                 <p className="text-sm">View my projects</p>
               </div>
             </a>
-
           </div>
 
           {/* CTA BUTTON */}

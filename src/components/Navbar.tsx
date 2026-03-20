@@ -1,8 +1,9 @@
-import { FaLinkedin } from "react-icons/fa";
+// import { FaLinkedin } from "react-icons/fa";
+import { FaMoon, FaSun } from "react-icons/fa";
 import { useTheme } from "../context/ThemeContext";
 
 const Navbar = () => {
-  const { toggleTheme } = useTheme();
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <div className="fixed top-0 w-full backdrop-blur bg-white/5 p-4 flex justify-between">
@@ -16,7 +17,14 @@ const Navbar = () => {
         >
           <FaLinkedin size={20} />
         </a> */}
-        <button onClick={toggleTheme}>Theme</button>
+        <button
+          onClick={toggleTheme}
+          className="p-2 rounded-lg bg-(--color-surface)
+          hover:bg-(--color-primary)
+          transition"
+        >
+          {theme === "dark" ? <FaSun /> : <FaMoon />}
+        </button>
       </div>
     </div>
   );

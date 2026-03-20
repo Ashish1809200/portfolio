@@ -21,17 +21,18 @@ const Hero = () => {
           <Button>View Projects</Button>
           <a
             href="/Ashish_Kashyap_Resume.pdf"
-            download
-            className="inline-flex items-center gap-2 mt-6 px-6 py-3 rounded-lg
-    bg-(--color-primary)]
-    text-white
-    hover:shadow-[0_0_15px_rgba(99,102,241,0.6)]
-    transition"
+            download="Ashish_Resume.pdf"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg
+                        bg-(--color-surface)
+                        text-(--color-text)
+                        border border-(--color-border)
+                        hover:bg-(--color-primary)
+                        hover:text-white
+                        transition"
           >
             <FaDownload />
             Download Resume
           </a>
-          <Button variant="outline">Contact Me</Button>
         </div>
       </div>
     </section>
