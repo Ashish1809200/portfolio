@@ -5,6 +5,7 @@ import Projects from "./sections/Projects";
 import Contact from "./sections/Contact";
 import { ThemeProvider } from "./context/ThemeProvider";
 import Navbar from "./components/Navbar";
+import ChatBot from "./components/ui/ChatBot";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Skills />
       <Projects />
       <Contact />
+      <ChatBot />
     </ThemeProvider>
   );
 }
