@@ -38,7 +38,7 @@ const ChatBot: React.FC = () => {
           'Authorization': `Bearer ${API_KEY}`,
         },
         body: JSON.stringify({
-          model: 'llama3',
+          model: 'gpt-oss:120b',
           messages: [...messages, userMessage],
           stream: false,
         }),
