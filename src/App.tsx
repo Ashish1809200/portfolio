@@ -6,6 +6,7 @@ import Contact from "./sections/Contact";
 import { ThemeProvider } from "./context/ThemeProvider";
 import Navbar from "./components/Navbar";
 import ChatBot from "./components/ui/ChatBot";
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Projects />
       <Contact />
       <ChatBot />
+      <Analytics />
     </ThemeProvider>
   );
 }
