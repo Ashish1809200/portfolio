@@ -29,25 +29,30 @@ const sendMessage = async () => {
 
   try {
     // CALL YOUR PROXY INSTEAD OF THE EXTERNAL URL
-    const response = await fetch('/api/chat', { 
+    const response = await fetch('/api/ollama', { 
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'gemma3:4b',
+        model: 'gpt-oss:120b',
         messages: [...messages, userMessage],
-        stream: true,
+        stream: false,
       }),
     });
 
     if (!response.ok) throw new Error(`Server error: ${response.status}`);
 
     const data = await response.json();
-    setMessages((prev) => [...prev, {
-      role: 'assistant',
-      content: data.message.content,
-    }]);
+   const reply =
+    data?.message?.content ||
+      data?.response ||
+      "No response";
+    
+    setMessages((prev) => [
+      ...prev,
+      { role: 'assistant', content: reply }
+]);
   } catch (error) {
     console.error('Chat Error:', error);
     setMessages((prev) => [...prev, { role: 'assistant', content: 'Offline: Check connection.' }]);
