@@ -37,7 +37,7 @@ const sendMessage = async () => {
       body: JSON.stringify({
         model: 'gpt-oss:120b',
         messages: [...messages, userMessage],
-        stream: false,
+        stream: true,
       }),
     });
 
@@ -66,8 +66,7 @@ const sendMessage = async () => {
                 <IoChatbubbleEllipses size={20} />
               </div>
               <div>
-                <h3 className="text-sm font-bold leading-none">AI Assistant</h3>
-                <span className="text-[10px] opacity-80">Powered by Llama 3</span>
+                <h3 className="text-sm font-bold leading-none">AI Assistant</h3>                
               </div>
             </div>
             <button 
@@ -118,7 +117,7 @@ const sendMessage = async () => {
                 onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
                 disabled={isLoading}
                 placeholder={isLoading ? "Please wait..." : "Type a message..."}
-                className="w-full rounded-xl border border-gray-200 bg-gray-50 py-3 pl-4 pr-12 text-sm transition-all focus:border-blue-500 focus:bg-white focus:outline-none disabled:opacity-50"
+                className="w-full rounded-xl border border-gray-200 bg-gray-50 py-3 pl-4 pr-12 text-sm text-gray-800 transition-all focus:border-blue-500 focus:bg-white focus:outline-none disabled:opacity-50"
               />
               <button
                 onClick={sendMessage}
