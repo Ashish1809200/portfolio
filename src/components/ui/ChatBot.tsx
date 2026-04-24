@@ -40,11 +40,9 @@ const sendMessage = async () => {
     if (!response.ok) throw new Error(`Server error: ${response.status}`);
 
     const data = await response.json();
-    console.log(data);
+    
    const reply =
-    data?.message?.content ||
-      data?.response ||
-      "No response";
+    data?.reply || "No response";
     
     setMessages((prev) => [
       ...prev,
