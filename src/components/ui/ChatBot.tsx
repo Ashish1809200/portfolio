@@ -34,7 +34,7 @@ const sendMessage = async () => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ message: "hello"}),
+      body: JSON.stringify({ message: [...messages, userMessage] }),
     });
 
     if (!response.ok) throw new Error(`Server error: ${response.status}`);
