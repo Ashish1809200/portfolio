@@ -15,49 +15,46 @@ const ChatBot: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  const OLLAMA_URL = import.meta.env.VITE_OLLAMA_URL;
-  const API_KEY = import.meta.env.VITE_OLLAMA_API_KEY;
-
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, isLoading]);
 
-  const sendMessage = async () => {
-    if (!input.trim() || isLoading) return;
+const sendMessage = async () => {
+  if (!input.trim() || isLoading) return;
 
-    const userMessage: Message = { role: 'user', content: input };
-    setMessages((prev) => [...prev, userMessage]);
-    setInput('');
-    setIsLoading(true);
+  const userMessage: Message = { role: 'user', content: input };
+  setMessages((prev) => [...prev, userMessage]);
+  setInput('');
+  setIsLoading(true);
 
-    try {
-      const response = await fetch(OLLAMA_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${API_KEY}`,
-        },
-        body: JSON.stringify({
-          model: 'gpt-oss:120b',
-          messages: [...messages, userMessage],
-          stream: false,
-        }),
-      });
+  try {
+    // CALL YOUR PROXY INSTEAD OF THE EXTERNAL URL
+    const response = await fetch('/api/chat', { 
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: 'gpt-oss:120b',
+        messages: [...messages, userMessage],
+        stream: false,
+      }),
+    });
 
-      if (!response.ok) throw new Error(`Server error: ${response.status}`);
+    if (!response.ok) throw new Error(`Server error: ${response.status}`);
 
-      const data = await response.json();
-      setMessages((prev) => [...prev, {
-        role: 'assistant',
-        content: data.message.content,
-      }]);
-    } catch (error) {
-      console.error('Chat Error:', error);
-      setMessages((prev) => [...prev, { role: 'assistant', content: 'Offline: Check connection.' }]);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+    const data = await response.json();
+    setMessages((prev) => [...prev, {
+      role: 'assistant',
+      content: data.message.content,
+    }]);
+  } catch (error) {
+    console.error('Chat Error:', error);
+    setMessages((prev) => [...prev, { role: 'assistant', content: 'Offline: Check connection.' }]);
+  } finally {
+    setIsLoading(false);
+  }
+};
 
   return (
     <div className="fixed bottom-6 right-6 z-[9999] flex flex-col items-end font-sans">      
