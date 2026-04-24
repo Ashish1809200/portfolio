@@ -31,7 +31,7 @@ const sendMessage = async () => {
     // CALL YOUR PROXY INSTEAD OF THE EXTERNAL URL
     const response = await fetch('/api/chat', {
       method: 'POST',
-      body: JSON.stringify({ message: "Hello" }),
+      body: JSON.stringify({ message: [...messages, userMessage]}),
     });
 
     if (!response.ok) throw new Error(`Server error: ${response.status}`);
