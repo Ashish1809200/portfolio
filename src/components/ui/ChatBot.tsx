@@ -35,7 +35,7 @@ const sendMessage = async () => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'gpt-oss:120b',
+        model: 'gemma3:4b',
         messages: [...messages, userMessage],
         stream: true,
       }),
