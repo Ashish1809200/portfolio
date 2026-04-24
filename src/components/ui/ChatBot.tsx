@@ -29,14 +29,9 @@ const sendMessage = async () => {
 
   try {
     // CALL YOUR PROXY INSTEAD OF THE EXTERNAL URL
-    const response = await fetch(import.meta.env.VITE_OLLAMA_URL, { 
+    const response = await fetch('/api/chat', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({      
-        messages: [...messages, userMessage]        
-      }),
+      body: JSON.stringify({ message: "Hello" }),
     });
 
     if (!response.ok) throw new Error(`Server error: ${response.status}`);
