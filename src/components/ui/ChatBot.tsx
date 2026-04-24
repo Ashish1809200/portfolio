@@ -31,6 +31,9 @@ const sendMessage = async () => {
     // CALL YOUR PROXY INSTEAD OF THE EXTERNAL URL
     const response = await fetch('/api/chat', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({ message: [...messages, userMessage]}),
     });
 
