@@ -29,15 +29,13 @@ const sendMessage = async () => {
 
   try {
     // CALL YOUR PROXY INSTEAD OF THE EXTERNAL URL
-    const response = await fetch('/api/ollama', { 
+    const response = await fetch(import.meta.env.VITE_OLLAMA_URL, { 
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        model: 'gpt-oss:120b',
-        messages: [...messages, userMessage],
-        stream: false,
+      body: JSON.stringify({      
+        messages: [...messages, userMessage]        
       }),
     });
 
